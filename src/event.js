@@ -62,7 +62,13 @@ export default [
     name: 'APP_RESOURCE_UPDATED',
     // @error api response data
     callback: function (msg) {
-      this.$message.success(msg);
+      this.$swal({
+        position: 'center',
+        type: 'success',
+        title: 'File Uploaded',
+        showConfirmButton: false,
+        timer: 1500
+      });
     }
   },
 

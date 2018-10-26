@@ -24,11 +24,11 @@ export default {
   props: {
     icon: String,
     title:{
-      default:String,
-      type:String
+      default:2,
+      type:Number
       },
     subTitle:{
-      default:"0.00",
+    
       type:String
     },
     color: String

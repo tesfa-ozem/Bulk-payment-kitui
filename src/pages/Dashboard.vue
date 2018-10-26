@@ -6,7 +6,7 @@
         <v-flex lg6 sm6 xs12>
           <mini-statistic
             icon="done"
-            v-bind:title="Amount"
+            v-bind:title = "Amount"
             sub-title="Amount to Pay"
             color="teal"      
           >
@@ -225,7 +225,7 @@ import LinearStatistic from "@/components/widgets/statistic/LinearStatistic";
 import DataTable from "@/components/CustomUi/DataTable";
 import UploadButton from "@/components/UploadButton";
 import axios from "axios";
-
+import Event from'./../event.js'
 
 
 // Import FilePond styles
@@ -287,32 +287,22 @@ export default {
       };
       axios(options)
         .then(function(response) {
-          alert("Transaction successfully Uploaded");
+          window.getApp.$emit('APP_RESOURCE_UPDATED')
           app.FileResponse = response.data;
           app.OrderNumber = response.data.OrderNo
           app.show = true,
-          app.Amount = response.data.AmountToPay
-          
+          app.Amount = payment.toLocaleString(parseInt(response.data.AmountToPay));
           
           
         })
         .catch(function(error) {
-          if (error.response) {
-            // The request was made and the server responded with a status code
-            // that falls out of the range of 2xx
-            console.log(error.response.data);
-            console.log(error.response.status);
-            console.log(error.response.headers);
-          } else if (error.request) {
-            // The request was made but no response was received
-            // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
-            // http.ClientRequest in node.js
-            console.log(error.request);
-          } else {
-            // Something happened in setting up the request that triggered an Error
-            console.log("Error", error.message);
-          }
-          console.log(error.config);
+        this.$swal({
+        position: 'center',
+        type: 'success',
+        title: error.response,
+        showConfirmButton: false,
+        timer: 1500
+      });
         });
     }
   }
