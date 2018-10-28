@@ -36,6 +36,7 @@
 </template>
 <script>
 /* eslint-disable */
+import {execute} from '@/api/axios.js'
 import Event from'./../event.js' 
 export default {
   data: () => ({
@@ -49,8 +50,6 @@ export default {
   methods: {
     login () {
       
-      
-
       if(this.model.username =="tesfa" )
       {
         this.loading = true;

@@ -42,7 +42,11 @@
     
 </div>
         <v-flex v-flex lg12 sm12 xs12>
-        <DataTable v-bind:FileResponse ="FileResponse" />
+           
+        <DataTable 
+        :FileResponse ="FileResponse"
+        :value ="uploadPercentage"
+         />
         </v-flex>         
         <!-- mini statistic  end -->   
         <!-- <v-flex lg8 sm12 xs12>
@@ -255,12 +259,13 @@ export default {
     test: "213",
     FileResponse: {},
     color: Material,
-    OrderNumber:'',
+    OrderNumber:'123N',
     show:false,
-    Amount:'',
-    title:'',
+    Amount:'0.00',
+    title:'099',
     Order:'',
-    tabs: null
+    tabs: null,
+    uploadPercentage: 0
     };
   },
   computed: {
@@ -275,14 +280,18 @@ export default {
     uploadFile: function(event) {
       this.Testing;
       var app = this;
+      var Mpesa
       this.file = event.target.files[0];
       const data = new FormData();
       data.append("MembersFile", this.file);
       const options = {
         method: "POST",
         headers: { 'Cache-Control': 'no-cache' },
-	      
         data,
+	      onUploadProgress: function( progressEvent ) {
+        this.uploadPercentage = parseInt( Math.round( ( progressEvent.loaded * 100 ) / progressEvent.total ) );
+        }.bind(this),
+        
         url: "http://40.114.117.175/UhcApi/api/BulkPayment/UploadGroupData"
       };
       axios(options)
@@ -291,7 +300,8 @@ export default {
           app.FileResponse = response.data;
           app.OrderNumber = response.data.OrderNo
           app.show = true,
-          app.Amount = payment.toLocaleString(parseInt(response.data.AmountToPay));
+          this.Mpesa = payment.toLocaleString(parseInt());
+          app.Amount = response.data.AmountToPay
           
           
         })

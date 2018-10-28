@@ -24,8 +24,8 @@ export default {
   props: {
     icon: String,
     title:{
-      default:2,
-      type:Number
+     
+      type:String
       },
     subTitle:{
     

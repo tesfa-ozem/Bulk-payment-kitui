@@ -77,7 +77,9 @@
                 item-key="Id"
                 select-all
                 v-model="complex.selected"
+                :loading="true"
                 >
+                <v-progress-linear slot="progress" color="blue" :value="value"></v-progress-linear>
                 <template slot="items" slot-scope="props">
                 <td>
                   <v-checkbox
@@ -107,7 +109,11 @@
 
 export default {
   props:{
-    FileResponse:Object
+    FileResponse:Object,
+    value:{
+      type:Number,
+      default:0
+      }
   },
   data () {
     return {
