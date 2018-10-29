@@ -15,27 +15,24 @@
     </template>
     <template slot="expand" slot-scope="props"> 
       <v-card>
-        <v-card-text>
-          {{ props.item.OrderAmount }}
-        </v-card-text>
         <v-card-actions>
-          <v-btn
+          <!-- <v-btn
         @click="LoadTable(props.item.Records)"
         color="red lighten-2"
         dark
       >
         View Data
-      </v-btn>
+      </v-btn> -->
       <v-btn
         @click="paymentDialog = true"
         color="green lighten-2"
         dark
       >
-        Initiate Payment
+        Make Payment
       </v-btn>
         </v-card-actions>
       </v-card>  
-    <v-dialog
+    <!-- <v-dialog
       v-model="dialog"
       width="500"
       lazy
@@ -84,21 +81,22 @@
         </v-card-actions>
       </v-card>
       
-    </v-dialog>
+    </v-dialog> -->
     <v-dialog
       v-model="paymentDialog"
       width="400"
     >
-      <v-card>
+      <v-card
+      >
         <v-card-title
           class="headline grey lighten-2"
           primary-title
         >
-          Privacy Policy
+          Payment Policy
         </v-card-title>
 
-        <v-card-text>
-          
+        <v-card-text class="--text pt-0 subheading">
+          In Mpesa Menu select lipa na Mpesa,Paybill option.Put business number <strong>815815</strong>,account number <strong>{{props.item.OrderNo}}</strong>,for KSH <strong>{{ props.item.OrderAmount }}</strong>.You will recive a confirmation message that your payment has been recived.
         </v-card-text>
 
         <v-divider></v-divider>

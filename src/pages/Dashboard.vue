@@ -27,9 +27,12 @@
         <v-btn flat>
           <input accept="application/excel" type="file" @change="uploadFile($event)">
         </v-btn>
-        <v-btn flat>
+        <v-btn
+         flat
+         href="/static/nature/MemberList(2055).xlsx"
+         download="Template">
           <v-icon color="primary">folder</v-icon>
-          &nbsp; Add Folder
+          &nbsp; Download Template
         </v-btn>
     </v-btn-toggle>
     <v-spacer></v-spacer>
@@ -261,7 +264,7 @@ export default {
     color: Material,
     OrderNumber:'123N',
     show:false,
-    Amount:'0.00',
+    Amount:'0.0',
     title:'099',
     Order:'',
     tabs: null,
@@ -298,10 +301,12 @@ export default {
         .then(function(response) {
           window.getApp.$emit('APP_RESOURCE_UPDATED')
           app.FileResponse = response.data;
-          app.OrderNumber = response.data.OrderNo
-          app.show = true,
-          this.Mpesa = payment.toLocaleString(parseInt());
-          app.Amount = response.data.AmountToPay
+          app.OrderNumber = response.data.OrderNo;
+          app.Amount = parseInt(response.data.AmountToPay).toLocaleString();
+          app.show = true;
+          app.Mpesa = parseInt(response.data.AmountToPay).toLocaleString();
+          console.log(app.Mpesa);
+          
           
           
         })
