@@ -157,10 +157,10 @@ export default {
   },
   methods:{
     fetchData(){
-      return (this.FileResponse.GroupData>0)?this.FileResponse.GroupData:this.FileResponse.FailedRecords
+      return this.complex.selected
     },
     statusUpdate(e){
-      return (e==true)?"Record Uploaded":"Record exists"
+      return (e==true)?"Record Uploade":"Record exists"
     }
   },
   watch: {

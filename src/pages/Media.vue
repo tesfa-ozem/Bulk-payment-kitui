@@ -8,13 +8,22 @@
           class="headline grey lighten-2 font-weight-regular"
           primary-title
         >
-          Order Numbers
+          <v-text-field
+              flat
+              solo
+              prepend-icon="search"
+              placeholder="Type something"
+              v-model="search"
+              hide-details
+              class="hidden-sm-and-down"
+              ></v-text-field>
         </v-card-title>
       <v-card-text>
     <v-data-table
     :headers="headers"
     :items="Orders"
     item-key="OrderNo"
+    :search="search"
     >
     <template slot="items" slot-scope="props">
     <tr @click="props.expanded = !props.expanded">
@@ -58,7 +67,7 @@
           class="headline grey lighten-2"
           primary-title
         >
-          All Records
+           
         </v-card-title>
 
         <v-card-text>
@@ -163,6 +172,7 @@ import VuePerfectScrollbar from 'vue-perfect-scrollbar'
           { text: 'Date', align: 'center', value: 'date' },
           
         ],
+        search: '',
         Orders:[],
         dialog: false,
         settings: {
