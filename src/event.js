@@ -52,8 +52,11 @@ export default [
     name: 'APP_ACCESS_DENIED',
     // @error api response data
     callback: function (msg) {
-      this.$message.error(msg);
-      this.$router.push('/forbidden');
+     this.snackbar = {
+       show: true,
+       color: 'red',
+       text: msg
+     };
     }
   },
   {

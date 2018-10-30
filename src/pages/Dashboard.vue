@@ -146,7 +146,7 @@ export default {
           if(app.FileResponse.FailedRecords.length>0){
             window.getApp.$emit('APP_BAD_REQUEST');
           }
-          else{
+          else if(app.FileResponse.FailedRecords.length<0){
           window.getApp.$emit('APP_RESOURCE_UPDATED')
           app.OrderNumber = response.data.OrderNo;
           app.Amount = parseInt(response.data.AmountToPay).toLocaleString();
@@ -154,19 +154,13 @@ export default {
           app.Mpesa = parseInt(response.data.AmountToPay).toLocaleString();
           }
           
-          console.log(app.Mpesa);
-          
-          
+          console.log(app.Mpesa)
           
         })
         .catch(function(error) {
-        this.$swal({
-        position: 'center',
-        type: 'success',
-        title: error.response,
-        showConfirmButton: false,
-        timer: 1500
-      });
+          console.log(error)
+          alert(error);
+        
         });
     }
   }
