@@ -71,7 +71,7 @@
               <v-data-table
                 :headers="complex.headers"
                 :search="search"
-                :items="FileResponse.GroupData"
+                :items="fetchData()"
                 :rows-per-page-items="[10,25,50,{text:'All','value':-1}]"
                 class="elevation-1"
                 item-key="Id"

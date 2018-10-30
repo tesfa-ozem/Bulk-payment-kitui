@@ -143,13 +143,16 @@ export default {
         .then(function(response) {
           
           app.FileResponse = response.data;
-          
+          if(app.FileResponse.FailedRecords.length>0){
+            window.getApp.$emit('APP_BAD_REQUEST');
+          }
+          else{
           window.getApp.$emit('APP_RESOURCE_UPDATED')
           app.OrderNumber = response.data.OrderNo;
           app.Amount = parseInt(response.data.AmountToPay).toLocaleString();
           app.show = true;
           app.Mpesa = parseInt(response.data.AmountToPay).toLocaleString();
-          
+          }
           
           console.log(app.Mpesa);
           
