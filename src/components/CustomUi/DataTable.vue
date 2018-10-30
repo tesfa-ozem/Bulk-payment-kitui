@@ -94,7 +94,7 @@
                   <td>{{ props.item.Phone}}</td>
                   <td><v-icon>done</v-icon></td>
                   <td>
-                    {{FileResponse.OrderNo}}
+                    {{statusUpdate()}}
                   </td>
                 </template>
               </v-data-table>
@@ -155,7 +155,10 @@ export default {
   },
   methods:{
     fetchData(){
-      return this.FileResponse.GroupData
+      return (this.FileResponse.GroupData>0)?this.FileResponse.GroupData:this.FileResponse.FailedRecords
+    },
+    statusUpdate(){
+      return (this.FileResponse.GroupData>0)?"Record Uploades":"Record exists"
     }
   },
   watch: {
