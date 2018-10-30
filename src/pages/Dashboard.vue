@@ -44,7 +44,27 @@
         <DataTable 
         :FileResponse ="FileResponse"
         :value ="uploadPercentage"
+        :loading = "loading"
          />
+         <v-snackbar
+      v-model="snackbar"
+      :bottom="y === 'bottom'"
+      :left="x === 'left'"
+      :multi-line="mode === 'multi-line'"
+      :right="x === 'right'"
+      :timeout="timeout"
+      :top="y === 'top'"
+      :vertical="mode === 'vertical'"
+    >
+      {{ text }}
+      <v-btn
+        color="pink"
+        flat
+        @click="snackbar = false"
+      >
+        Close
+      </v-btn>
+    </v-snackbar>
     </v-flex>         
       </v-layout>
     </v-container>
@@ -109,7 +129,14 @@ export default {
     title:'099',
     Order:'',
     tabs: null,
-    uploadPercentage: 0
+    uploadPercentage: 0,
+    loading:false,
+    snackbar: false,
+        y: 'bottom',
+        x: 'right',
+        mode: '',
+        timeout: 6000,
+        text: ''
     };
   },
   computed: {
@@ -143,15 +170,21 @@ export default {
         .then(function(response) {
           
           app.FileResponse = response.data;
-          if(app.FileResponse.FailedRecords.length>0){
-            window.getApp.$emit('APP_BAD_REQUEST');
-          }
-          else if(app.FileResponse.FailedRecords.length<0){
-          window.getApp.$emit('APP_RESOURCE_UPDATED')
+          if(app.FileResponse.StatusCode===200){
+          app.text= app.FileResponse.Message
+          app.snackbar = true
           app.OrderNumber = response.data.OrderNo;
+          
           app.Amount = parseInt(response.data.AmountToPay).toLocaleString();
+          app.loading = true;
+
           app.show = true;
           app.Mpesa = parseInt(response.data.AmountToPay).toLocaleString();
+          }
+          else {
+          app.text= app.FileResponse.Message
+          app.snackbar = true
+          
           }
           
           console.log(app.Mpesa)

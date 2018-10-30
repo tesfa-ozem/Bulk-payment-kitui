@@ -71,13 +71,13 @@
               <v-data-table
                 :headers="complex.headers"
                 :search="search"
-                :items="fetchData()"
+                :items="FileResponse.GroupData"
                 :rows-per-page-items="[10,25,50,{text:'All','value':-1}]"
                 class="elevation-1"
                 item-key="Id"
                 select-all
                 v-model="complex.selected"
-                :loading="true"
+                :loading="loading"
                 >
                 <v-progress-linear slot="progress" color="blue" :value="value"></v-progress-linear>
                 <template slot="items" slot-scope="props">
@@ -92,9 +92,9 @@
                   
                   <td>{{ props.item.IdNumber}}</td>
                   <td>{{ props.item.Phone}}</td>
-                  <td><v-icon>done</v-icon></td>
+                  <td >{{statusUpdate(props.item.Successful)}}</td>
                   <td>
-                    {{statusUpdate()}}
+                    {{FileResponse.OrderNo}}
                   </td>
                 </template>
               </v-data-table>
@@ -110,6 +110,7 @@
 export default {
   props:{
     FileResponse:Object,
+    loading:Boolean,
     value:{
       type:Number,
       default:0
@@ -144,6 +145,7 @@ export default {
           },
         ],
         
+        
       },
       json_fields: {
         'Name': 'Name',
@@ -157,8 +159,8 @@ export default {
     fetchData(){
       return (this.FileResponse.GroupData>0)?this.FileResponse.GroupData:this.FileResponse.FailedRecords
     },
-    statusUpdate(){
-      return (this.FileResponse.GroupData>0)?"Record Uploades":"Record exists"
+    statusUpdate(e){
+      return (e==true)?"Record Uploaded":"Record exists"
     }
   },
   watch: {

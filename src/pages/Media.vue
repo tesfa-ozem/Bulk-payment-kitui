@@ -21,6 +21,7 @@
         <td class="text-xs-center">{{ props.item.OrderNo }}</td>
         <td class="text-xs-center">{{ props.item.OrderAmount }}</td>
         <td class="text-xs-center">Status</td>
+        <td class="text-xs-center">{{props.item.Date}}</td>
         
     </tr>
     </template>
@@ -31,6 +32,7 @@
         @click="LoadTable(props.item.Records)"
         color="red lighten-2"
         dark
+        flat
       >
         View Data
       </v-btn> 
@@ -38,6 +40,7 @@
         @click="paymentDialog = true"
         color="green lighten-2"
         dark
+        flat
       >
         Make Payment
       </v-btn>
@@ -55,7 +58,7 @@
           class="headline grey lighten-2"
           primary-title
         >
-          Privacy Policy
+          All Records
         </v-card-title>
 
         <v-card-text>
@@ -71,6 +74,7 @@
                   <td>{{ props.item.FirstName }}</td>
                   <td>{{ props.item.IdNumber}}</td>
                   <td>{{ props.item.PhoneNumber}}</td>
+                  <td>{{ props.item.Date}}</td>
                   
                   </tr>
             </template>
@@ -87,7 +91,7 @@
             flat
             @click="dialog = false"
           >
-            I accept
+            Ok
           </v-btn>
         </v-card-actions>
       </v-card>
@@ -107,7 +111,12 @@
         </v-card-title>
 
         <v-card-text class="--text pt-0 subheading">
-          In Mpesa Menu select lipa na Mpesa,Paybill option.Put business number <strong>815815</strong>,account number <strong>{{props.item.OrderNo}}</strong>,for KSH <strong>{{ props.item.OrderAmount }}</strong>.You will recive a confirmation message that your payment has been recived.
+          1.Go to Mpesa Menu select lipa na Mpesa.<br>
+          2. Select Paybill option.<br>
+          3.Put business number <strong>815815</strong>,go next.<br>
+          4.Put account number <strong>{{props.item.OrderNo}}</strong>,go next
+          5.Put the amount KSH <strong>{{ props.item.OrderAmount }}</strong>.<br>
+          6.You will recive a confirmation message that your payment has been recived on complition of the transaction.
         </v-card-text>
 
         <v-divider></v-divider>
@@ -151,6 +160,7 @@ import VuePerfectScrollbar from 'vue-perfect-scrollbar'
           { text: 'Amount', align: 'center', value: 'OrderAmount' },
 
           { text: 'Status', align: 'center', value: 'protein' },
+          { text: 'Date', align: 'center', value: 'date' },
           
         ],
         Orders:[],
@@ -161,7 +171,8 @@ import VuePerfectScrollbar from 'vue-perfect-scrollbar'
       },
       paymentDialog:false,
       dialogTable:[],
-      HeaderDialog:[{
+      HeaderDialog:[
+          {
             text: 'Name',
             value: 'Name'
           },
@@ -176,7 +187,12 @@ import VuePerfectScrollbar from 'vue-perfect-scrollbar'
           {
             text: 'Order Number',
             value: 'OrderNo'
-          },]
+          },
+          {
+            text: 'Date',
+            value: 'date'
+          }
+          ]
       
       }
     },
