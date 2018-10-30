@@ -1,8 +1,19 @@
 <template>
+<v-container grid-list-md text-xs-center>
+  <v-layout row wrap>
+    <v-flex xs12>
+      
+    <v-card>
+      <v-card-title
+          class="headline grey lighten-2 font-weight-regular"
+          primary-title
+        >
+          Order Numbers
+        </v-card-title>
+      <v-card-text>
     <v-data-table
     :headers="headers"
     :items="Orders"
-    hide-actions
     item-key="OrderNo"
     >
     <template slot="items" slot-scope="props">
@@ -16,13 +27,13 @@
     <template slot="expand" slot-scope="props"> 
       <v-card>
         <v-card-actions>
-          <!-- <v-btn
+          <v-btn
         @click="LoadTable(props.item.Records)"
         color="red lighten-2"
         dark
       >
         View Data
-      </v-btn> -->
+      </v-btn> 
       <v-btn
         @click="paymentDialog = true"
         color="green lighten-2"
@@ -32,15 +43,13 @@
       </v-btn>
         </v-card-actions>
       </v-card>  
-    <!-- <v-dialog
+    <v-dialog
       v-model="dialog"
       width="500"
       lazy
       sync
       
     >
-     
-
       <v-card>
         <v-card-title
           class="headline grey lighten-2"
@@ -50,7 +59,7 @@
         </v-card-title>
 
         <v-card-text>
-          <VuePerfectScrollbar class="scroll-area" v-once :settings="settings" @ps-scroll-y="scrollHanle">
+          
           <v-data-table
           :headers="HeaderDialog"
           :items.sync="dialogTable"
@@ -66,7 +75,7 @@
                   </tr>
             </template>
           </v-data-table>
-          </VuePerfectScrollbar>
+          
         </v-card-text>
 
         <v-divider></v-divider>
@@ -83,7 +92,7 @@
         </v-card-actions>
       </v-card>
       
-    </v-dialog> -->
+    </v-dialog>
     <v-dialog
       v-model="paymentDialog"
       width="400"
@@ -94,7 +103,7 @@
           class="headline grey lighten-2"
           primary-title
         >
-          Payment Policy
+          Payment
         </v-card-title>
 
         <v-card-text class="--text pt-0 subheading">
@@ -118,6 +127,13 @@
     </v-dialog>
     </template>
     </v-data-table>
+      </v-card-text>
+    </v-card>
+    </v-flex>
+  </v-layout>
+      
+  </v-container>
+
 </template>
 <script>
 /* eslint-disable */

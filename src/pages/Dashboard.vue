@@ -35,176 +35,17 @@
           &nbsp; Download Template
         </v-btn>
     </v-btn-toggle>
-    <v-spacer></v-spacer>
-    <v-btn-toggle >
-    </v-btn-toggle>
+   
     </v-toolbar>
-    <v-divider></v-divider>
-    </v-flex>
-    <div>
     
-</div>
-        <v-flex v-flex lg12 sm12 xs12>
+    </v-flex>
+    <v-flex v-flex lg12 sm12 xs12>
            
         <DataTable 
         :FileResponse ="FileResponse"
         :value ="uploadPercentage"
          />
-        </v-flex>         
-        <!-- mini statistic  end -->   
-        <!-- <v-flex lg8 sm12 xs12>
-          <v-widget title="Site Traffic" content-bg="white">
-            <v-btn icon slot="widget-header-action">
-              <v-icon class="text--secondary">refresh</v-icon>
-            </v-btn>
-            <div slot="widget-content">
-                <e-chart 
-                :path-option="[
-                  ['dataset.source', siteTrafficData],
-                  ['color', [color.lightBlue.base, color.green.lighten1]],
-                  ['legend.show', true],
-                  ['xAxis.axisLabel.show', true],
-                  ['yAxis.axisLabel.show', true],
-                  ['grid.left', '2%'],
-                  ['grid.bottom', '5%'],
-                  ['grid.right', '3%'],
-                  ['series[0].type', 'bar'],
-                  ['series[0].areaStyle', {}],
-                  ['series[0].smooth', true],
-                  ['series[1].smooth', true],
-                  ['series[1].type', 'bar'],
-                  ['series[1].areaStyle', {}],
-                ]"
-                height="400px"
-                width="100%"
-                >
-                </e-chart>     
-            </div>
-          </v-widget>  
-        </v-flex>
-        <v-flex lg4 sm12 xs12>
-          <v-widget title="Top Location" content-bg="white">
-            <div slot="widget-content">
-                <e-chart 
-                :path-option="[
-                  ['dataset.source', locationData],
-                  ['legend.bottom', '0'],
-                  ['color', [color.lightBlue.base, color.indigo.base, color.pink.base, color.green.base, color.cyan.base, color.teal.base]],
-                  ['xAxis.show', false],
-                  ['yAxis.show', false],
-                  ['series[0].type', 'pie'],
-                  ['series[0].avoidLabelOverlap', true],         
-                  ['series[0].radius', ['50%', '70%']],                      
-                ]"
-                height="400px"
-                width="100%"
-                >
-                </e-chart>     
-            </div>
-          </v-widget>  
-        </v-flex> -->
-        <!-- social/weather card start -->
-        <!-- <v-flex lg4 sm12 xs12>
-          <profile-card>
-          </profile-card>
-        </v-flex>        
-        <v-flex lg4 sm12 xs12>
-          <box-chart
-            card-color="indigo"
-            title="Trending"
-            sub-title="10%"
-            icon="trending_up"
-            :data="siteTrafficData"
-            :chart-color="[color.indigo.lighten1]"
-            type="line"
-          >
-          </box-chart>
-          <box-chart class="mt-4"
-            card-color="pink"
-            title="Page views"
-            sub-title="10%"
-            icon="trending_up"
-            :data="siteTrafficData"
-            :chart-color="[color.pink.darken1, 'rgba(255,255,255,0.3)']"
-            gradient
-            type="area"
-          >
-          </box-chart>          
-        </v-flex> -->
-        <!-- statistic section -->
-        <!-- <v-flex lg4 sm12 xs12>
-          <linear-statistic 
-            title="Sales"
-            sub-title="Sales increase"
-            icon="trending_up"
-            color="success"
-            :value="15"
-          >
-          </linear-statistic>
-          <linear-statistic class="my-4"
-            title="Orders"
-            sub-title="Increase"
-            icon="trending_up"
-            color="pink"
-            :value="30"
-          >
-          </linear-statistic>          
-          <linear-statistic class="my-4"
-            title="Revenue"
-            sub-title="Revenue increase"
-            icon="trending_up"
-            color="primary"
-            :value="50"
-          >
-          </linear-statistic>          
-          <linear-statistic class="mt-4"
-            title="Cost"
-            sub-title="Cost reduce"
-            icon="trending_down"
-            color="orange"
-            :value="25"
-          >
-          </linear-statistic>          
-        </v-flex> -->
-        <!-- Circle statistic -->
-        <!-- <v-flex lg4 sm12 xs12 v-for="(item,index) in trending" :key="'c-trending'+index">
-          <circle-statistic
-            :title="item.subheading"
-            :sub-title="item.headline"
-            :caption="item.caption"
-            :icon="item.icon.label"
-            :color="item.linear.color"
-            :value="item.linear.value"
-          >
-          </circle-statistic>            
-        </v-flex>     -->
-        <!-- acitivity/chat widget -->
-        <!-- <v-flex lg6 sm12 xs12>
-          <chat-window height="308px"></chat-window>
-        </v-flex>
-        <v-flex lg6 sm12 xs12>
-          <v-widget title="Activities" contentBg="white">
-            <div slot="widget-content">
-              <ol class="timeline timeline-activity timeline-point-sm timeline-content-right">
-                <li class="timeline-block" v-for="(item, index) in activity" :key="index">
-                  <div class="timeline-point">
-                    <v-circle dot large :color="item.color"></v-circle>
-                  </div>
-                  <div class="timeline-content">
-                    <time datetime="2018" class="subheading">{{item.timeString}}</time>
-                    <div class="py-2 text--secondary" v-html="item.text"></div>
-                  </div>
-                </li>
-              </ol>              
-            </div>
-          </v-widget>          
-        </v-flex>
-        <v-flex lg7 sm12 xs12>
-          <plain-table></plain-table>
-        </v-flex>
-        <v-flex lg5 sm12 xs12>
-          <plain-table-order></plain-table-order>
-        </v-flex>  -->              
+    </v-flex>         
       </v-layout>
     </v-container>
   </div>
@@ -262,7 +103,7 @@ export default {
     test: "213",
     FileResponse: {},
     color: Material,
-    OrderNumber:'123N',
+    OrderNumber:'0',
     show:false,
     Amount:'0.0',
     title:'099',
@@ -281,6 +122,7 @@ export default {
   },
   methods: {
     uploadFile: function(event) {
+      
       this.Testing;
       var app = this;
       var Mpesa
@@ -299,12 +141,16 @@ export default {
       };
       axios(options)
         .then(function(response) {
-          window.getApp.$emit('APP_RESOURCE_UPDATED')
+          
           app.FileResponse = response.data;
+          
+          window.getApp.$emit('APP_RESOURCE_UPDATED')
           app.OrderNumber = response.data.OrderNo;
           app.Amount = parseInt(response.data.AmountToPay).toLocaleString();
           app.show = true;
           app.Mpesa = parseInt(response.data.AmountToPay).toLocaleString();
+          
+          
           console.log(app.Mpesa);
           
           

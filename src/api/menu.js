@@ -27,7 +27,7 @@ const Menu =  [
     name: 'Media',
     icon: 'perm_media',
   },
-  {
+  /* {
     title: 'Widgets',
     group: 'widgets',
     component: 'widgets',
@@ -39,7 +39,7 @@ const Menu =  [
       { name: 'list', title: 'List', component: 'components/widget-list' },
       // { name: 'post', title: 'Post', component: 'components/widget-post' },
     ]
-  },  
+  }, */  
   /* { header: 'UI Elements' },
   {
     title: 'General',

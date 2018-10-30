@@ -1,3 +1,4 @@
+/* eslint-disable */
 export default [
   {
     name: 'APP_LOGIN_SUCCESS',
@@ -21,7 +22,7 @@ export default [
         color: 'green',
         text: 'Logout successfully.'
       };
-      this.$router.replace({ path: '/login' });
+      this.$router.replace({ path: '/' });
     }
   },
   {
@@ -40,7 +41,11 @@ export default [
     name: 'APP_BAD_REQUEST',
     // @error api response data
     callback: function (msg) {
-      this.$message.error(msg);
+       this.snackbar = {
+         show: true,
+         color: 'red',
+         text: 'Failed to upload,users exsist'
+       };
     }
   },
   {
